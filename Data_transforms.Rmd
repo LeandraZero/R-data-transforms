@@ -1,0 +1,37 @@
+---
+title: "Data Transformation Function"
+author: "Leandra Ling"
+date: "2024-10-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+# Load packages
+library(dplyr)
+
+# First function - Simple data transformation
+# This function takes a dataset and calculates summary statistics
+transform_data <- function(data) {
+  # Check if input is a data frame
+  if (!is.data.frame(data)) {
+    stop("Input must be a data frame")
+  }
+  
+  # Get summary statistics for numeric columns
+  numeric_cols < sapply(data, is.numeric)
+  if (sum(numeric_cols) == 0) {
+    stop("Data frame must contain at least one numeric column")
+  }
+  
+  #Calculate mean and standard deviation for numeric columns
+  summary_stats <- data %>%
+    summarise(across(where(is.numeric),
+                     list(mean = mean, sd = sd),
+                     na.rm = TRUE))
+  return(summary_stats)
+}
+
+```
