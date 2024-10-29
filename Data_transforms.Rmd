@@ -34,4 +34,18 @@ transform_data <- function(data) {
   return(summary_stats)
 }
 
+
+
+# Second function - Simple transformtion
+transform_data_2 <- function(data) {
+  # Check if input is a data frame
+  if (!is.data.frmae(data)) {
+    stop("Input must be a data frame")
+  }
+  
+  #Double all numeric columns
+  transformed_data <- data %>%
+    mutate(across(where(is.numeric), ~.x * 2))
+  return(transformed_data)
+}
 ```
