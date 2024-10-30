@@ -36,16 +36,17 @@ transform_data <- function(data) {
 
 
 
-# Second function - Simple transformtion
-transform_data_2 <- function(data) {
+# Second function - Simple transformation
+transform_data_2 <- function(data_new) {
   # Check if input is a data frame
-  if (!is.data.frmae(data)) {
+  if (!is.data.frame(data_new)) {
     stop("Input must be a data frame")
   }
   
   #Double all numeric columns
-  transformed_data <- data %>%
+  transformed_data <- data_new %>%
     mutate(across(where(is.numeric), ~.x * 2))
+
   return(transformed_data)
 }
 ```
